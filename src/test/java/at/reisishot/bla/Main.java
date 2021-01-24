@@ -5,7 +5,6 @@ import at.reisishot.bla.json.JSON;
 import at.reisishot.bla.xml.XML;
 import at.reisishot.mapping.MappingCommand;
 import at.reisishot.mapping.MappingUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -17,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class Main {
 
     @Test
@@ -27,8 +28,8 @@ public class Main {
 
         JSON mapped = MappingUtils.map(xml, JSON.class, mappings);
 
-        Assertions.assertEquals(1, mapped.getA());
-        Assertions.assertEquals("bla", mapped.getJt().getValue());
+        assertEquals(1, mapped.getA());
+        assertEquals("bla", mapped.getJt().getValue());
     }
 
     private XML createXml() {

@@ -145,8 +145,9 @@ public class MappingUtils {
         Method readMethod = requireNonNull(stepPd.getReadMethod(), "Getter not found for >" + cur + "<");
         Object stepValue = readMethod.invoke(current);
         if (stepValue == null) {
-            stepValue = readMethod.getReturnType()
-                    .getConstructor()
+            final Constructor<?> constructor = readMethod.getReturnType()
+                    .getConstructor();
+            stepValue = requireNonNull(constructor, "No zero-arg constructor found")
                     .newInstance();
             final Method writeMethod = requireNonNull(stepPd.getWriteMethod(), "Setter not found for >" + cur + "<");
             writeMethod.invoke(current, stepValue);
