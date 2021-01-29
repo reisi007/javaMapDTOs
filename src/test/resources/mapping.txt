@@ -1,3 +1,5 @@
+sE[i].string=secondListString[i]
+xmll[index]=jsonList[index]
 xt.value=jt.value
 b=a
 b=a

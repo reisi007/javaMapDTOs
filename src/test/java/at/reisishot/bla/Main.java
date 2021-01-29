@@ -2,6 +2,7 @@ package at.reisishot.bla;
 
 import at.reisishot.bla.commons.ComplexType;
 import at.reisishot.bla.json.JSON;
+import at.reisishot.bla.xml.StringElement;
 import at.reisishot.bla.xml.XML;
 import at.reisishot.mapping.MappingCommand;
 import at.reisishot.mapping.MappingUtils;
@@ -12,9 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -30,6 +29,8 @@ public class Main {
 
         assertEquals(1, mapped.getA());
         assertEquals("bla", mapped.getJt().getValue());
+        assertEquals("3", mapped.getJsonList().get(2));
+        assertEquals("myElement", mapped.getSecondListString().get(0));
     }
 
     private XML createXml() {
@@ -38,6 +39,10 @@ public class Main {
         ComplexType xt = new ComplexType();
         xml.setXt(xt);
         xt.setValue("bla");
+
+        xml.setXmll(Arrays.asList(1, 2, 3));
+
+        xml.setsE(Collections.singletonList(new StringElement("myElement")));
         return xml;
     }
 
