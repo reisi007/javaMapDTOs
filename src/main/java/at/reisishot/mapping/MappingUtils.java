@@ -113,7 +113,6 @@ public class MappingUtils {
         final String newFromKeyTmp = substringAfter(fromKey, curFrom);
         final String newToKeyTmp = substringAfter(toKey, curTo);
 
-
         final Matcher fromMatcher = arrayListPattern.matcher(newFromKeyTmp);
         final Matcher toMatcher = arrayListPattern.matcher(newToKeyTmp);
 
@@ -148,7 +147,6 @@ public class MappingUtils {
                 .getGenericReturnType())
                 .getActualTypeArguments()[0];
 
-        // TODO get converter
         for (int i = 0; i < fromList.size(); i++) {
             final Object iFrom = fromList.get(i);
             Object iTo;
